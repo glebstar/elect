@@ -1,0 +1,27 @@
+.elect-area {
+  padding: 5px 0;
+  border: solid 1px #2a88bd;
+  width: 335px;
+}
+
+.elect-area .row {
+  margin: 0;
+}
+
+.lamp {
+  width: 60px;
+  height: 60px;
+  background-color: #222222;
+  border-radius: 6px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  float: left;
+  cursor: pointer;
+}
+
+.active {
+  border: solid 1px #222222;
+  background-color: #5bc0de;
+  cursor: default;
+}
+
