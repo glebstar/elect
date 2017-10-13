@@ -1,6 +1,7 @@
 .elect-area {
   padding: 5px 0;
   border: solid 1px #2a88bd;
+  background-color: #000;
   width: 335px;
 }
 
@@ -11,6 +12,7 @@
 .lamp {
   width: 60px;
   height: 60px;
+  border: solid 1px #8c8c8c;
   background-color: #222222;
   border-radius: 6px;
   margin-left: 5px;
@@ -20,7 +22,7 @@
 }
 
 .active {
-  border: solid 1px #222222;
+  /*border: solid 1px #222222;*/
   background-color: #5bc0de;
   cursor: default;
 }
