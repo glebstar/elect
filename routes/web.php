@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::post('/new', 'ElectController@newGame');
+Route::post('/move', 'ElectController@newMove');

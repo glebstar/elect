@@ -19,4 +19,19 @@ class ElectController extends Controller
             ]
         ]);
     }
+
+    public function newMove(Request $request)
+    {
+        $elect = $request->session()->get($request->_token);
+        $elect->newMove($request->id);
+
+        $request->session()->put($request->_token, $elect);
+
+        return response()->json([
+            'elect' => [
+                'lamps' => $elect->getLamps(),
+                'move'  => $elect->getMove()
+            ]
+        ]);
+    }
 }

@@ -41,4 +41,36 @@ class Elect
     {
         return $this->move;
     }
+
+    public function newMove($id)
+    {
+        if(!isset($this->lamps[$id - 1]) || $this->lamps[$id - 1]['active']) {
+            return false;
+        }
+
+        $this->lamps[$id - 1]['active'] = true;
+
+        // переключить близлежащие лампочки
+        $near = [
+            -1, -6, -5, -4, 1, 6, 5, 4
+        ];
+
+        if (in_array($id, [1, 6, 11, 16, 21])) {
+            $near = [-5, -4, 1, 6, 5];
+        }
+
+        if (in_array($id, [5, 10, 15, 20, 25])) {
+            $near = [-5, -6, -1, 4, 5];
+        }
+
+        foreach ($near as $n) {
+            $idLamp = $id - 1 + $n;
+
+            if (isset($this->lamps[$idLamp])) {
+                $this->lamps[$idLamp]['active'] = $this->lamps[$idLamp]['active'] ? false : true;
+            }
+        }
+
+        $this->move++;
+    }
 }
