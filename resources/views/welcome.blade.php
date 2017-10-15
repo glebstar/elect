@@ -21,5 +21,6 @@
 @endsection
 
 @section('scripts')
+    <script src="{{ asset('js/jquery.msgbox.min.js') }}"></script>
     <script src="{{ mix('/js/main.js') }}"></script>
 @endsection

@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Winner;
+
 /**
  * Class Elect Класс игрока
  * @package App
@@ -22,6 +24,13 @@ class Elect
      */
     private $lamps = [];
 
+    /**
+     * Есть ли победа
+     *
+     * @var boolean
+     */
+    private $isWin = false;
+
     public function __construct()
     {
         for($i=1; $i<=25; $i++) {
@@ -40,6 +49,11 @@ class Elect
     public function getMove()
     {
         return $this->move;
+    }
+
+    public function getIsWin()
+    {
+        return $this->isWin;
     }
 
     public function newMove($id)
@@ -82,9 +96,35 @@ class Elect
 
         if (18 == rand(1, 25)) {
             // потушить одну случайную лампу
-            $this->lamps[$activeLamps[ rand(1, count($activeLamps)-1) ]]['active'] = false;
+            $this->lamps[$activeLamps[ rand(0, count($activeLamps)-1) ]]['active'] = false;
         }
 
+        $this->checkWin();
+
         $this->move++;
+    }
+
+    /**
+     * Проверка, есть ли победа
+     */
+    private function checkWin()
+    {
+        $win = true;
+        foreach ($this->lamps as $lamp) {
+            if (! $lamp['active']) {
+                $win = false;
+                break;
+            }
+        }
+
+        $this->isWin = $win;
+    }
+
+    public function setWin($name)
+    {
+        Winner::create([
+            'name' => $name,
+            'moves' => $this->move
+        ]);
     }
 }

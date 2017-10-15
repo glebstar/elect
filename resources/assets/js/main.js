@@ -1,3 +1,5 @@
+var gamerName = '';
+
 $(document).ready(function () {
     newGame();
 });
@@ -6,6 +8,7 @@ function newGame() {
     $.post('/new', {_token: _token}, function (data) {
         fillLamps(data.elect);
     });
+    changeMoves(0);
 }
 
 function fillLamps(elect) {
@@ -29,6 +32,11 @@ function newMove(obj) {
     $.post('/move', {_token: _token, id: id}, function (data) {
         changeLamps(data.elect);
         changeMoves(data.elect.move);
+
+        if (data.elect.win) {
+            /* победа */
+            setWin();
+        }
     });
 }
 
@@ -49,4 +57,18 @@ function changeMoves(n) {
         $('.d-' + d).addClass('digit-' + ns[i]);
         d++;
     }
+}
+
+function setWin() {
+    setTimeout(function () {
+        $.prompt("You won!!!\nEnter your name:", gamerName, function(value) {
+            gamerName = value;
+            if (gamerName) {
+                $.post('/win', {_token: _token, name: gamerName}, function (data) {
+                    newGame();
+                });
+            }
+        });
+
+    }, 200);
 }

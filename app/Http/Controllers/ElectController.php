@@ -30,8 +30,21 @@ class ElectController extends Controller
         return response()->json([
             'elect' => [
                 'lamps' => $elect->getLamps(),
-                'move'  => $elect->getMove()
+                'move'  => $elect->getMove(),
+                'win'   => $elect->getIsWin()
             ]
+        ]);
+    }
+
+    public function setWin(Request $request)
+    {
+        $elect = $request->session()->get($request->_token);
+        if ($elect->getIsWin()) {
+            $elect->setWin($request->name);
+        }
+
+        return response()->json([
+            'result' => 'ok'
         ]);
     }
 }
