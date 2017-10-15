@@ -6,6 +6,10 @@
 
 @section('content')
     <h1>Electrician</h1>
+    <div class="row btn-area">
+        <a class="btn btn-primary btn-new-game" href="#">New Game</a>
+        <a class="btn btn-primary btn-top-winners" href="#">Top Winners</a>
+    </div>
     <div class="elect-area">
         <div class="row area">
         </div>

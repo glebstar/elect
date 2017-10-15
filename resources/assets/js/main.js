@@ -2,6 +2,25 @@ var gamerName = '';
 
 $(document).ready(function () {
     newGame();
+
+    $('.btn-new-game').click(function() {
+        $.confirm('Start a new game?', function (result) {
+            if (result) {
+                newGame();
+            }
+        });
+    });
+
+    $('.btn-top-winners').click(function(){
+        $.post('/top', {_token: _token}, function (data) {
+            var winners = "Top Winners:\n\n";
+            for (var key in data.winners) {
+                winners += data.winners[key].name + ': ' + data.winners[key].moves + "\n";
+            }
+
+            $.alert(winners);
+        });
+    });
 });
 
 function newGame() {

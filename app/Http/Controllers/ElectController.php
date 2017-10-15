@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Elect;
+use App\Winner;
 
 class ElectController extends Controller
 {
@@ -45,6 +46,13 @@ class ElectController extends Controller
 
         return response()->json([
             'result' => 'ok'
+        ]);
+    }
+
+    public function getTop()
+    {
+        return response()->json([
+            'winners' => Winner::orderBy('moves')->limit(10)->get()
         ]);
     }
 }
