@@ -71,6 +71,20 @@ class Elect
             }
         }
 
+        // на каждом ходу с вероятностью 1 к 25 одна лампочка гаснет
+        // все горящие лампочки
+        $activeLamps = [];
+        for($i=0; $i<25; $i++) {
+            if ($this->lamps[$i]['active']) {
+                $activeLamps[] = $i;
+            }
+        }
+
+        if (18 == rand(1, 25)) {
+            // потушить одну случайную лампу
+            $this->lamps[$activeLamps[ rand(1, count($activeLamps)-1) ]]['active'] = false;
+        }
+
         $this->move++;
     }
 }
