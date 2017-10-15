@@ -22,7 +22,60 @@
 }
 
 .active {
-  /*border: solid 1px #222222;*/
   background-color: #5bc0de;
   cursor: default;
+}
+
+.digits {
+  margin-left: 10px;
+  width: 100%;
+  background-color: #000;
+  border: solid 1px #8c8c8c;
+  border-radius: 6px;
+}
+
+.digit {
+  margin-left: 5px;
+  float: left;
+  width: 50px;
+  height: 95px;
+  background-image: url('/i/digits.jpg');
+  background-repeat: no-repeat;
+  background-position: -318px -120px;
+}
+
+.digit-1 {
+  background-position: -31px -20px;
+}
+
+.digit-2 {
+  background-position: -104px -20px;
+}
+
+.digit-3 {
+  background-position: -175px -20px;
+}
+
+.digit-4 {
+  background-position: -247px -20px;
+}
+
+.digit-5 {
+  background-position: -318px -20px;
+}
+
+.digit-6 {
+  background-position: -31px -120px;
+}
+
+.digit-7 {
+  background-position: -104px -120px;
+}
+
+.digit-8 {
+  background-position: -175px -120px;
+}
+
+.digit-9 {
+  background-position: -247px -120px;
 }
