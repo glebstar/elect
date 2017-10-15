@@ -9,6 +9,8 @@ $(document).ready(function () {
                 newGame();
             }
         });
+
+        return false;
     });
 
     $('.btn-top-winners').click(function(){
@@ -20,6 +22,8 @@ $(document).ready(function () {
 
             $.alert(winners);
         });
+
+        return false;
     });
 });
 
@@ -54,7 +58,7 @@ function newMove(obj) {
 
         if (data.elect.win) {
             /* победа */
-            setWin();
+            setWin(data.elect.move);
         }
     });
 }
@@ -78,9 +82,9 @@ function changeMoves(n) {
     }
 }
 
-function setWin() {
+function setWin(moves) {
     setTimeout(function () {
-        $.prompt("You won!!!\nEnter your name:", gamerName, function(value) {
+        $.prompt("You won!!! " + moves +" moves\nEnter your name:", gamerName, function(value) {
             gamerName = value;
             if (gamerName) {
                 $.post('/win', {_token: _token, name: gamerName}, function (data) {
