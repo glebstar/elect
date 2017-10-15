@@ -84,6 +84,7 @@ function changeMoves(n) {
 
 function setWin(moves) {
     setTimeout(function () {
+        gamerName = gamerName ? gamerName : '';
         $.prompt("You won!!! " + moves + " moves\nEnter your name:", gamerName, function(value) {
             gamerName = value;
             if (gamerName) {
