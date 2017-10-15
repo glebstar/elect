@@ -84,7 +84,7 @@ function changeMoves(n) {
 
 function setWin(moves) {
     setTimeout(function () {
-        $.prompt("You won!!! " + moves +" moves\nEnter your name:", gamerName, function(value) {
+        $.prompt("You won!!! " + moves + " moves\nEnter your name:", gamerName, function(value) {
             gamerName = value;
             if (gamerName) {
                 $.post('/win', {_token: _token, name: gamerName}, function (data) {
